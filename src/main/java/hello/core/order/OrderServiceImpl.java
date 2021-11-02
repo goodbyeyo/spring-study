@@ -6,10 +6,13 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor // final 키워드가 필드를 모아서 생성자를 자동으로 만들어준다
+// 룸북이 자바의 애노테이션 프로세서라는 기능을 이용해서 컴파일 시점에 코드(생성자)를 자동으로 생성해준다
 public class OrderServiceImpl implements OrderService {
 
     // final 이 있으면 값이 반드시 할당되어야 한다(보통 생성자를 통해 값을 반드시 넣도록 구현하거나 초기화 값을 넣는다)
@@ -20,12 +23,14 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+/*
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         System.out.println("1.OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+*/
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
