@@ -32,14 +32,14 @@ public class NetworkClient {
         System.out.println("close: " + url);
     }
 
-    @PostConstruct
+    @PostConstruct  //  외부 라이브러리에는 적용하지 못한다
     public void init() throws Exception {
         System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메세지");
     }
 
-    @PreDestroy
+    @PreDestroy // 외부라이브러리를 종료해야하면 @Bean의 기능을 사용하면 된다
     public void close() throws Exception {
         System.out.println("NetworkClient.close");
         disconnect();
