@@ -8,10 +8,11 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor // final 키워드가 필드를 모아서 생성자를 자동으로 만들어준다
+//@RequiredArgsConstructor // final 키워드가 필드를 모아서 생성자를 자동으로 만들어준다
 // 룸북이 자바의 애노테이션 프로세서라는 기능을 이용해서 컴파일 시점에 코드(생성자)를 자동으로 생성해준다
 public class OrderServiceImpl implements OrderService {
 
@@ -23,14 +24,17 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-/*
+//    @Autowired private DiscountPolicy rateDiscountPolicy;
+
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy rateDiscountPolicy) {
         System.out.println("1.OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
+//        this.discountPolicy = rateDiscountPolicy;
     }
-*/
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
