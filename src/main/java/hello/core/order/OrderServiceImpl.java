@@ -18,8 +18,8 @@ public class OrderServiceImpl implements OrderService {
     // final 이 있으면 값이 반드시 할당되어야 한다(보통 생성자를 통해 값을 반드시 넣도록 구현)
     // 단 생성자가 1개만 있으면 @Autowired 를 생략해도 된다
 
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
     /*
         @Autowired //(required = false) 선택적 의존관계에 사용할수있다
@@ -35,12 +35,14 @@ public class OrderServiceImpl implements OrderService {
             this.discountPolicy = discountPolicy;
         }
     */
-    
+
+/*
     @Autowired
     public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+*/
 
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
