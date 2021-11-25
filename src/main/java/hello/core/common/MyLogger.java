@@ -12,8 +12,7 @@ public class MyLogger {
 
     private String uuid;
     private String requestURL;
-    private String testCommit;
-    
+
     public void setRequestURL(String requestURL) {
         this.requestURL = requestURL;
     }
@@ -33,5 +32,4 @@ public class MyLogger {
     public void close() {
         System.out.println("[" + uuid + "] request scope bean close:" + this);
     }
-
 }
