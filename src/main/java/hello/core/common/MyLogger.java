@@ -12,6 +12,7 @@ public class MyLogger {
 
     private String uuid;
     private String requestURL;
+    private String commitTestFOrRevert;
 
     public void setRequestURL(String requestURL) {
         this.requestURL = requestURL;
