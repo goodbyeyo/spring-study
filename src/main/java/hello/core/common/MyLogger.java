@@ -13,6 +13,7 @@ public class MyLogger {
     private String uuid;
     private String requestURL;
     private String test1;
+    private String test2;
 
     public void setRequestURL(String requestURL) {
         this.requestURL = requestURL;
